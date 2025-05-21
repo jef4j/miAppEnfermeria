@@ -1,0 +1,7 @@
+{
+  "name": "miAppEnfermeria",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
