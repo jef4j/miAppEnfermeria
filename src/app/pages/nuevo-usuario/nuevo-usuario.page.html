@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login" text="Volver" color="primary"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear Cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="register-content">
+  <div class="register-container">
+    <div class="register-header">
+      <ion-icon name="person-add" class="register-icon"></ion-icon>
+      <h1>Crea tu cuenta</h1>
+      <p>Completa tus datos para comenzar</p>
+    </div>
+
+    <form (ngSubmit)="registrar()" class="register-form">
+      <ion-item lines="none" class="form-item">
+        <ion-icon name="person-outline" slot="start"></ion-icon>
+        <ion-label position="floating">Nombre</ion-label>
+        <ion-input [(ngModel)]="nombre" name="nombre" required clearInput></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" class="form-item">
+        <ion-icon name="people-outline" slot="start"></ion-icon>
+        <ion-label position="floating">Apellido</ion-label>
+        <ion-input [(ngModel)]="apellido" name="apellido" required clearInput></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" class="form-item">
+        <ion-icon name="mail-outline" slot="start"></ion-icon>
+        <ion-label position="floating">Correo electrónico</ion-label>
+        <ion-input type="email" [(ngModel)]="email" name="email" required clearInput></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" class="form-item">
+        <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+        <ion-label position="floating">Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="password" name="password" required></ion-input>
+      </ion-item>
+
+      <ion-item lines="none" class="form-item">
+        <ion-icon name="checkmark-done-outline" slot="start"></ion-icon>
+        <ion-label position="floating">Confirmar Contraseña</ion-label>
+        <ion-input type="password" [(ngModel)]="confirmar" name="confirmar" required></ion-input>
+      </ion-item>
+
+      <div *ngIf="error" class="error-message">
+        <ion-icon name="warning-outline"></ion-icon>
+        <span>{{ error }}</span>
+      </div>
+
+      <ion-button expand="block" type="submit" class="submit-button">
+        <ion-icon name="save-outline" slot="start"></ion-icon>
+        Registrar Cuenta
+      </ion-button>
+
+      <div class="login-link">
+        ¿Ya tienes una cuenta? 
+        <a routerLink="/login">Inicia sesión</a>
+      </div>
+    </form>
+  </div>
+</ion-content>

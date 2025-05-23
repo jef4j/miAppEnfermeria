@@ -1,0 +1,197 @@
+/* Variables de tema */
+:host {
+  --ion-color-primary: #3a7bd5;
+  --ion-color-primary-shade: #316dc2;
+  --card-border-radius: 12px;
+  --card-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Estructura principal */
+.history-content {
+  --background: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+/* Encabezado del paciente */
+.patient-header {
+  text-align: center;
+  margin: 20px 0 30px;
+  animation: fadeIn 0.5s ease-out;
+  
+  .medical-icon {
+    font-size: 2.8rem;
+    color: var(--ion-color-primary);
+    background: rgba(58, 123, 213, 0.1);
+    padding: 18px;
+    border-radius: 50%;
+    margin-bottom: 12px;
+  }
+
+  h2 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin: 8px 0 4px;
+    font-size: 1.3rem;
+  }
+
+  p {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
+/* Lista de consultas */
+.consultations-list {
+  margin-bottom: 20px;
+  animation: slideUp 0.5s ease-out;
+}
+
+.consultation-card {
+  --background: #ffffff;
+  border-radius: var(--card-border-radius);
+  box-shadow: var(--card-shadow);
+  margin-bottom: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:active {
+    transform: translateY(2px);
+  }
+
+  ion-card-header {
+    padding-bottom: 0;
+    
+    ion-card-subtitle {
+      color: #7f8c8d;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  ion-card-content {
+    padding-top: 8px;
+    
+    .consultation-details {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    
+    .detail-section {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      
+      h3 {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #2c3e50;
+        font-size: 1rem;
+        font-weight: 600;
+        margin: 0;
+        
+        ion-icon {
+          font-size: 1.1rem;
+        }
+      }
+      
+      p {
+        color: #2c3e50;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        margin: 0 0 0 24px;
+        white-space: pre-line;
+      }
+    }
+  }
+}
+
+/* Estado vacío */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  animation: fadeIn 0.5s ease-out;
+  
+  ion-icon {
+    font-size: 3rem;
+    color: #b8c2cc;
+    margin-bottom: 16px;
+  }
+  
+  h3 {
+    color: #4a5568;
+    font-weight: 600;
+    margin: 0 0 8px;
+  }
+  
+  p {
+    color: #7f8c8d;
+    font-size: 0.95rem;
+    margin: 0;
+  }
+}
+
+/* Botón de volver */
+.back-button {
+  --border-radius: 12px;
+  --padding-top: 16px;
+  --padding-bottom: 16px;
+  --background: #ffffff;
+  --color: var(--ion-color-primary);
+  --border-width: 1px;
+  --border-style: solid;
+  --border-color: var(--ion-color-primary);
+  margin-top: auto;
+  margin-bottom: 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    --background: var(--ion-color-primary);
+    --color: #ffffff;
+  }
+  
+  &:active {
+    transform: translateY(2px);
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive para tablets */
+@media (min-width: 768px) {
+  .history-content {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .consultation-card {
+    margin-bottom: 20px;
+  }
+}

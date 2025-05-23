@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Nuevo Estudiante</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="form-content">
+  <form (ngSubmit)="guardarEstudiante()" #form="ngForm" class="student-form">
+    <div class="form-header">
+      <ion-icon name="person-add-outline" class="form-icon"></ion-icon>
+      <h2>Datos del Estudiante</h2>
+      <p>Complete todos los campos requeridos</p>
+    </div>
+
+    <ion-item class="form-item">
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input [(ngModel)]="nombre" name="nombre" required clearInput></ion-input>
+      <ion-icon name="person-outline" slot="start"></ion-icon>
+    </ion-item>
+
+    <ion-item class="form-item">
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input [(ngModel)]="apellido" name="apellido" required clearInput></ion-input>
+      <ion-icon name="people-outline" slot="start"></ion-icon>
+    </ion-item>
+
+    <ion-item class="form-item">
+      <ion-label position="floating">Código institucional</ion-label>
+      <ion-input [(ngModel)]="codigo" name="codigo" required clearInput></ion-input>
+      <ion-icon name="id-card-outline" slot="start"></ion-icon>
+    </ion-item>
+
+    <ion-item class="form-item">
+      <ion-label position="floating">Caso de consulta</ion-label>
+      <ion-textarea [(ngModel)]="caso" name="caso" rows="4" autoGrow></ion-textarea>
+      <ion-icon name="document-text-outline" slot="start"></ion-icon>
+    </ion-item>
+
+    <ion-item class="form-item">
+      <ion-label position="floating">Solución rápida</ion-label>
+      <ion-textarea [(ngModel)]="solucion" name="solucion" rows="4" autoGrow></ion-textarea>
+      <ion-icon name="medkit-outline" slot="start"></ion-icon>
+    </ion-item>
+
+    <div class="form-actions">
+      <ion-button expand="block" type="submit" [disabled]="!form.valid" class="submit-button">
+        <ion-icon name="save-outline" slot="start"></ion-icon>
+        Guardar Estudiante
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

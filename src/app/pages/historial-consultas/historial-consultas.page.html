@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/estudiantes">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Historial Médico</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="refresh()" fill="clear">
+        <ion-icon slot="icon-only" name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="history-content">
+  <div class="patient-header" *ngIf="codigo">
+    <ion-icon name="medical-outline" class="medical-icon"></ion-icon>
+    <h2>Registros del Estudiante</h2>
+    <p>Código: {{codigo}}</p>
+  </div>
+
+  <div *ngIf="consultas?.length; else noData" class="consultations-list">
+    <ion-card *ngFor="let c of consultas" class="consultation-card">
+      <ion-card-header>
+        <ion-card-subtitle>{{ c.fecha | date:'medium' }}</ion-card-subtitle>
+      </ion-card-header>
+      
+      <ion-card-content>
+        <div class="consultation-details">
+          <div class="detail-section">
+            <ion-icon name="document-text-outline" color="primary"></ion-icon>
+            <h3>Motivo de consulta</h3>
+            <p>{{ c.caso }}</p>
+          </div>
+          
+          <div class="detail-section">
+            <ion-icon name="medkit-outline" color="primary"></ion-icon>
+            <h3>Solución aplicada</h3>
+            <p>{{ c.solucion }}</p>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ng-template #noData>
+    <div class="empty-state">
+      <ion-icon name="file-tray-outline"></ion-icon>
+      <h3>No hay consultas registradas</h3>
+      <p>No se encontraron historiales médicos para este estudiante</p>
+    </div>
+  </ng-template>
+
+  <ion-button expand="block" routerLink="/estudiantes" class="back-button">
+    <ion-icon slot="start" name="arrow-undo-outline"></ion-icon>
+    Volver al listado
+  </ion-button>
+</ion-content>

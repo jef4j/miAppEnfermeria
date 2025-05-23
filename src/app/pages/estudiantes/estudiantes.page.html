@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Gestión de Estudiantes</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="mostrarTodos()" fill="clear">
+        <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding student-content">
+  <div class="search-container">
+    <ion-item class="search-input">
+      <ion-label position="floating">Buscar por código</ion-label>
+      <ion-input [(ngModel)]="codigoBuscar" (ionChange)="buscarEstudiante()" clearInput></ion-input>
+      <ion-button slot="end" fill="clear" (click)="buscarEstudiante()">
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </div>
+
+  <!-- Resultado de búsqueda individual -->
+  <div *ngIf="estudiante && !mostrandoTodos" class="search-result">
+    <ion-card class="student-card">
+      <ion-card-header>
+        <ion-card-title>{{ estudiante.nombre }} {{ estudiante.apellido }}</ion-card-title>
+        <ion-card-subtitle>Código: {{ estudiante.codigo }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="card-actions">
+          <ion-button expand="block" fill="outline" routerLink="/historial-consultas" [queryParams]="{codigo: estudiante.codigo}">
+            <ion-icon slot="start" name="document-text-outline"></ion-icon>
+            Historial
+          </ion-button>
+          <ion-button expand="block" color="primary" routerLink="/nueva-consulta" [queryParams]="{codigo: estudiante.codigo}">
+            <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+            Nueva Consulta
+          </ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <!-- Lista de todos los estudiantes -->
+  <div *ngIf="mostrandoTodos" class="all-students">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Todos los estudiantes</ion-label>
+        <ion-button fill="clear" (click)="mostrandoTodos = false">
+          <ion-icon slot="icon-only" name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-list-header>
+
+      <ion-item *ngFor="let estudiante of todosEstudiantes" class="student-item">
+        <ion-avatar slot="start">
+          <img src="assets/icon/estudi.png" alt="Estudiante">
+        </ion-avatar>
+        
+        <ion-label>
+          <h2>{{ estudiante.nombre }} {{ estudiante.apellido }}</h2>
+          <p>Código: {{ estudiante.codigo }}</p>
+        </ion-label>
+        
+        <ion-buttons slot="end">
+          <ion-button fill="clear" (click)="seleccionarEstudiante(estudiante.codigo)">
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <ion-button expand="block" routerLink="/agregar-estudiante" class="add-button">
+    <ion-icon slot="start" name="person-add-outline"></ion-icon>
+    Agregar Nuevo Estudiante
+  </ion-button>
+</ion-content>

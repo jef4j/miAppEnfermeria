@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/estudiantes">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Registrar Consulta</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="guardarConsulta()" [disabled]="!caso || !solucion">
+        <ion-icon slot="icon-only" name="save-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="consultation-content">
+  <div class="patient-info" *ngIf="codigo">
+    <ion-icon name="person-circle-outline" class="patient-icon"></ion-icon>
+    <h3>Consulta para estudiante</h3>
+    <p>Código: {{codigo}}</p>
+  </div>
+
+  <form class="consultation-form">
+    <ion-item class="form-item">
+      <ion-label position="stacked">Motivo de consulta</ion-label>
+      <ion-textarea 
+        [(ngModel)]="caso" 
+        name="caso" 
+        placeholder="Describa los síntomas o motivo de consulta"
+        rows="5"
+        autoGrow
+        required
+      ></ion-textarea>
+      <ion-icon name="document-text-outline" slot="start"></ion-icon>
+    </ion-item>
+
+    <ion-item class="form-item">
+      <ion-label position="stacked">Tratamiento aplicado</ion-label>
+      <ion-textarea 
+        [(ngModel)]="solucion" 
+        name="solucion" 
+        placeholder="Describa la solución o tratamiento aplicado"
+        rows="5"
+        autoGrow
+        required
+      ></ion-textarea>
+      <ion-icon name="medkit-outline" slot="start"></ion-icon>
+    </ion-item>
+
+    <div class="form-actions">
+      <ion-button 
+        expand="block" 
+        (click)="guardarConsulta()" 
+        [disabled]="!caso || !solucion"
+        class="submit-button"
+      >
+        <ion-icon name="save-outline" slot="start"></ion-icon>
+        Guardar Consulta Médica
+      </ion-button>
+    </div>
+  </form>
+</ion-content>

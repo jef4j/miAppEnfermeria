@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Enfermería App</ion-title>
+    <ion-buttons slot="end" class="user-section">
+      <ion-text class="user-name"></ion-text>
+      <ion-avatar class="user-avatar">
+        <img src="assets/icon/avatar.png" alt="user" />
+      </ion-avatar>
+      <ion-button fill="clear" (click)="logout()" class="logout-btn">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding home-content">
+  <div class="buttons-container">
+    <ion-button expand="block" routerLink="/estudiantes" class="action-button">
+      <ion-icon slot="start" name="people-outline"></ion-icon>
+      Ver Estudiantes
+    </ion-button>
+    
+    <ion-button expand="block" routerLink="/agregar-estudiante" class="action-button">
+      <ion-icon slot="start" name="person-add-outline"></ion-icon>
+      Agregar Estudiante
+    </ion-button>
+    
+    <ion-button expand="block" class="action-button emergency-button">
+      <ion-icon slot="start" name="alert-circle-outline"></ion-icon>
+      Caso de Emergencia
+    </ion-button>
+  </div>
+</ion-content>
